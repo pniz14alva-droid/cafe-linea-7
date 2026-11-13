@@ -1,0 +1,236 @@
+:root {
+  --cafe: #2b1a10;
+  --cafe-claro: #4a2c18;
+  --amarillo: #f2b632;
+  --naranja: #d2691e;
+  --crema: #f6e7c3;
+  --papel: #fff3d1;
+  --texto: #3a2414;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--cafe);
+  color: var(--crema);
+  font-family: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+p { margin: 0 0 1rem; max-width: 60ch; }
+
+.hero {
+  padding: 3rem 1.25rem 2.5rem;
+  background: linear-gradient(180deg, var(--cafe-claro), var(--cafe));
+}
+
+.bullet {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: var(--amarillo);
+  display: grid;
+  place-items: center;
+  font-size: 2.6rem;
+  box-shadow: 0 0 0 6px var(--cafe), 0 0 0 9px var(--amarillo);
+  margin-bottom: 2rem;
+  animation: balanceo 1.4s ease-out 1;
+}
+
+@keyframes balanceo {
+  0% { transform: translateY(-14px) rotate(-12deg); }
+  60% { transform: translateY(0) rotate(6deg); }
+  100% { transform: none; }
+}
+
+h1 {
+  font-size: clamp(2rem, 9vw, 3rem);
+  line-height: 1.08;
+  font-weight: 800;
+  margin: 0 0 1.25rem;
+  color: var(--amarillo);
+}
+
+.nod { color: var(--naranja); font-weight: 600; }
+
+/* La línea vertical con paradas */
+.line {
+  position: relative;
+  margin: 0 1.25rem;
+  padding-left: 2rem;
+  border-left: 8px solid var(--amarillo);
+}
+
+.station { position: relative; padding: 0 0 2.5rem; }
+
+.station::before {
+  content: "";
+  position: absolute;
+  left: calc(-2rem - 14px);
+  top: 0.35rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--cafe);
+  border: 5px solid var(--amarillo);
+}
+
+.station.last { padding-bottom: 4.5rem; }
+
+h2 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin: 0 0 0.75rem;
+  color: var(--crema);
+}
+
+/* Tickets de pedido */
+.ticket {
+  background: var(--papel);
+  color: var(--texto);
+  padding: 1rem 1.1rem 0.6rem;
+  margin: 0 0 1.25rem;
+  border-radius: 4px;
+  border-bottom: 6px dotted var(--cafe);
+  box-shadow: 0 3px 0 var(--naranja);
+}
+
+.ticket p { margin-bottom: 0.7rem; }
+
+.tk {
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: var(--naranja);
+  border-bottom: 2px dashed var(--naranja);
+  padding-bottom: 0.35rem;
+}
+
+.reply { font-weight: 600; }
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+#more {
+  background: var(--naranja);
+  color: var(--papel);
+  border: 0;
+  border-radius: 999px;
+  padding: 0.55rem 1.2rem;
+  font-weight: 800;
+  margin-bottom: 0.6rem;
+}
+
+/* Notas */
+blockquote {
+  margin: 0 0 1.1rem;
+  padding: 0.9rem 1rem;
+  background: var(--cafe-claro);
+  border-left: 5px solid var(--naranja);
+  border-radius: 0 10px 10px 0;
+}
+
+blockquote p { margin: 0; }
+
+.sign { font-weight: 800; color: var(--amarillo); }
+
+/* Botón de música */
+.music {
+  position: fixed;
+  right: 1rem;
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 0;
+  background: var(--amarillo);
+  color: var(--cafe);
+  font-size: 1.2rem;
+  box-shadow: 0 0 0 4px var(--cafe), 0 0 0 7px var(--naranja);
+  z-index: 10;
+}
+
+.music[aria-pressed="true"] { background: var(--naranja); color: var(--papel); }
+
+.music-msg {
+  position: fixed;
+  left: 1rem;
+  right: 6rem;
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  background: var(--papel);
+  color: var(--texto);
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin: 0;
+  z-index: 10;
+}
+
+:focus-visible { outline: 3px solid var(--amarillo); outline-offset: 3px; }
+
+@media (min-width: 700px) {
+  .hero, .line { max-width: 640px; margin-left: auto; margin-right: auto; }
+  .line { padding-left: 2.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bullet { animation: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* Memes */
+h3 { font-size: 1.1rem; font-weight: 800; color: var(--amarillo); margin: 1.75rem 0 0.75rem; }
+
+.meme { margin: 0 0 1.25rem; }
+
+.meme-img {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  border-radius: 6px;
+  background: radial-gradient(circle at 50% 55%, var(--amarillo), var(--naranja));
+  border: 4px solid var(--papel);
+  overflow: hidden;
+}
+
+.meme-img .pic { font-size: clamp(3.5rem, 22vw, 6rem); line-height: 1; }
+
+.meme-img .top,
+.meme-img .bottom {
+  font-weight: 800;
+  font-size: clamp(1.1rem, 5.5vw, 1.6rem);
+  line-height: 1.1;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+  -webkit-text-stroke: 1px var(--cafe);
+  paint-order: stroke fill;
+  text-shadow: 2px 2px 0 var(--cafe);
+}
+
+.hint { font-size: 0.9rem; opacity: 0.85; }
+code { background: var(--cafe-claro); padding: 0.1rem 0.35rem; border-radius: 4px; }
+
+.gallery { display: grid; gap: 0.9rem; grid-template-columns: 1fr; }
+.gallery figure { margin: 0; }
+.gallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  border: 4px solid var(--papel);
+}
+
+@media (min-width: 700px) {
+  .gallery { grid-template-columns: 1fr 1fr; }
+}
